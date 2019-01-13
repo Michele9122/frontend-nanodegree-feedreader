@@ -32,7 +32,7 @@ $(function() {
          * and that the URL is not empty.
          */
 
-        it('url defined', function(){
+        it('URL are defined and not empty', function(){
             for(let feed of allFeeds){
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
@@ -43,7 +43,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */ 
-        it('name defined', function(){
+        it('name are defined and not empty', function(){
             for(let feed of allFeeds){
                 expect(feed.name).toBeDefined();
                 expect(feed.name.length).not.toBe(0);
@@ -93,15 +93,36 @@ $(function() {
              loadFeed(0, done);
          })
 
-         if('work completed', function() {
+         it('work completed', function() {
              const feed = document.querySelector('.feed');
              expect(feed.children.length > 0).toBe(true);
          });
+    });
     /* TODO: Write a new test suite named "New Feed Selection" */
-
+    describe('New Feed Selection', function(){
+        const feed = document.querySelector('.feed');
+        const firstFeed = [];
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+        beforeEach(function(done) {
+            loadFeed(0);
+            Array.from(feed.children).forEach(function(entry){
+                firstFeed.push(entry.innerText);
+            });
+            loadFeed(1,done);
+        });
+
+
+        it('feed are loaded', function(){
+            Array.from(feed.children).forEach(function(entry, index){ 
+            expect(entry.innerText === firstFeed[index]).toBe(false);
+            });
+        });
+
     });
+         
+
+   
 }());
