@@ -100,8 +100,8 @@ $(function() {
     });
     /* TODO: Write a new test suite named "New Feed Selection" */
     describe('New Feed Selection', function(){
-        const feed = document.querySelector('.feed');
-        const firstFeed = [];
+        const currentFeed = document.querySelector('.feed');
+        const afterFeed = [];
         /* TODO: Write a test that ensures when a new feed is loaded
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
@@ -109,7 +109,7 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0);
             Array.from(feed.children).forEach(function(entry){
-                firstFeed.push(entry.innerText);
+                afterFeed.push(entry.innerText);
             });
             loadFeed(1,done);
         });
@@ -117,7 +117,7 @@ $(function() {
 
         it('feed are loaded', function(){
             Array.from(feed.children).forEach(function(entry, index){ 
-            expect(entry.innerText === firstFeed[index]).toBe(false);
+            expect(entry.innerText === afterFeed[index]).toBe(false);
             });
         });
 
