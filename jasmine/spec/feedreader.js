@@ -71,8 +71,8 @@ $(function() {
          })
 
          it('work completed', function() {
-             const feed = document.querySelector('.feed');
-             expect(feed.children.length > 0).toBe(true);
+             const feed = document.querySelectorAll('.feed .entry'
+             expect(feed.length > 0).toBe(true);
          });
     });
   
@@ -81,11 +81,12 @@ $(function() {
         const afterFeed = [];
 
         beforeEach(function(done) {
-            loadFeed(0);
-            Array.from(feed.children).forEach(function(entry){
+            loadFeed(0, function(){ 
+            Array.from(currentFeed.children).forEach(function(entry){
                 afterFeed.push(entry.innerText);
-            });
-            loadFeed(1,done);
+             });
+             loadFeed(1,done);
+          });
         });
 
 
