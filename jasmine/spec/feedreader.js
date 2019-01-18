@@ -71,7 +71,7 @@ $(function() {
          })
 
          it('work completed', function() {
-             const feed = document.querySelectorAll('.feed .entry'
+             const feed = document.querySelectorAll('.feed .entry');
              expect(feed.length > 0).toBe(true);
          });
     });
@@ -91,7 +91,7 @@ $(function() {
 
 
         it('feed are loaded', function(){
-            Array.from(feed.children).forEach(function(entry, index){ 
+            Array.from(currentFeed.children).forEach(function(entry, index){ 
             expect(entry.innerText === afterFeed[index]).toBe(false);
             });
         });
